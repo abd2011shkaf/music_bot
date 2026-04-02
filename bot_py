@@ -1,0 +1,12 @@
+import telebot
+
+TOKEN = 8624840434:AAH2D0O6oeh4dQ-FisJgrPr9BEIisuTjzJA
+
+bot = telebot.TeleBot(TOKEN)
+
+@bot.message_handler(commands=['start'])
+def send_welcom(message):
+  bot.reply_to(message, "Привет!")
+
+print("Бот запущен...")
+bot.infinity_polling()
