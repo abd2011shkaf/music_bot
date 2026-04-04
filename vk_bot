@@ -5,9 +5,9 @@ import requests
 import json
 import random
 
-TOKEN = ""
+TOKEN = "8424840434:AAH2D0O6oeh4dQ-FisJgr9BEIisuTjzJA"
 
-GROUP_ID = 
+GROUP_ID = 816846499
 
 VK_API_TOKEN = 
 
