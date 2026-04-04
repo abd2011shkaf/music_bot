@@ -9,7 +9,7 @@ TOKEN = "8424840434:AAH2D0O6oeh4dQ-FisJgr9BEIisuTjzJA"
 
 GROUP_ID = 816846499
 
-VK_API_TOKEN = 
+VK_API_TOKEN = "816846499"
 
 vk_session = vk_api.VkApi(token=TOKEN)
 vk = vk_sission.get_api()
