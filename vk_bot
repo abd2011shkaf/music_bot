@@ -1,0 +1,104 @@
+import vk_api
+from vk_api.bot_longpoll import
+VkBotLongPoll, VkBotEventType 
+import requests
+import json
+import random
+
+TOKEN = ""
+
+GROUP_ID = 
+
+VK_API_TOKEN = 
+
+vk_session = vk_api.VkApi(token=TOKEN)
+vk = vk_sission.get_api()
+longpoll = VkBotLongPoll(vk_session, GROUP_ID)
+
+GENRE_KEYWORDS = {
+  "рок": ["рок", "rock","метал", "heavy","альтернатива"],
+  "поп": ["поп", "pop", "танцевальная", "веселая"],
+  "рэп": ["рэп", "хип-хоп", "hip-hop", "рэпчик"],
+  "электроника": ["электроника", "edm", "хаус", "house", "techno"],
+  "джаз": ["джаз", "jazz", "блюз", "blues"], 
+  "классика": ["классика", "classical", "инструментальная"]
+}
+  def get_music_by_mood(query_text):
+  """
+  функция для поиска музыки по описанию настроения/жанра 
+  в реальном проекте здесь будет запрос к VK Music API
+  """
+  query_lower = query_text.lower()
+
+  # Определяем жанр по ключевым словам 
+  detected_genre = None 
+  for genre, keywords in 
+GENRE_KEYWORDS.items():
+    for keyword in keywords:
+      if keyword in genry_lower:
+        detected_genre = genre 
+          break 
+      if detected_genre:
+        break
+# Поиск подходящего трека в демо-базе
+        matching_tracks = []
+        for track in DEMO_TRACKS:
+        # Проверяем совпадение тегов 
+          for tag in track ["tags"]:
+            if tag in genry_lower or 
+              (detected_genre and detected_genre in track["tags"]):
+
+              matching_tracks.append(track)
+                        break 
+              if matching_tracks:
+                track = 
+                random.choice(matching_tracks)
+                return f" по запросу *'{query_text}'* пока ничего не нашёл.
+                Попробуйте: рок, поп, рэп, электроника, джаз, классика или опишите настроение!"
+
+                # Слушаем сообщение 
+                print(" Бот-рекомнедатель запущен!
+                      Напишите боту жанр или настроение!"
+
+                      for event in longpoll/listen():
+                        if even.type ==
+                          VkBotEventType.MESSAGE_NEW:
+                          msg = event. odjest.message
+                          peer_id = msg['peer_id']
+                          text = msg['text'].lower()
+
+                          # Команда /help
+                          if text == "/help" or text == "помощь":
+                            help_text = """
+                            * Музыкальный рекомендатель*
+                            Напишите мне, какое настроение или жанр вам нужен, и я подберу песню!
+
+                            * Примеры запросов 
+                            - Грустная песня 
+                            - Энергичный рок 
+                            - Рэп для зарядки 
+                            - Популярная танцевальная
+                            - Джаз для вечера 
+
+                            * Допустимые жанры:* рок, поп, рэп, электроника, джаз, классика"""
+
+                            vk.message.send(peer_id=peer_id, message=help_text, random_id=0)
+                            # Приветствие 
+                            elif text in ["привет", "strart", "/start"]:
+                            vk.message.send(
+                              peer_id=peer_id,
+                              message="Привет! Я подбираю песни по описанию. Просто напиши, что хочешь послушать!\nПримеры команд: /help",
+                              random_id=0
+                            )
+                            # Обработка обычных сообщений 
+                            ( поиск по запросу )
+                            else:
+                              answer = 
+                              get_music_by_mood(text)
+
+                              vk/message/send(peer_id=peer_id,
+                                              message=as=nswer, random_id=0)
+                              
+    
+  
+  
